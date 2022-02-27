@@ -9,6 +9,7 @@ search.addEventListener('click', function (event) {
         .then(Response => Response.json())
         .then(data => displayData(data));
     input.value = '';
+    console.log(data);
 })
 
 function displayData(data) {
@@ -22,7 +23,7 @@ function displayData(data) {
             <h5 class="card-title">${singleMeal.strMeal}</h5>
             <span class="fs-6">${singleMeal.strCategory},</span><span class="fs-6"> ${singleMeal.strArea}</span>
             <p class="card-text">${singleMeal.strInstructions.slice(0,250)}...</p>
-            <button onclick="loadDetails(${singleMeal.idMeal})" class= "btn details btn-primary">Details</button>
+            <button onclick="loadDetails(${singleMeal.idMeal}), scrollToTop()" class= "btn details btn-primary">Details</button>
           </div>
         </div>`
         food.appendChild(div);
@@ -46,5 +47,10 @@ function displayDetails(data) {
   </div>`
     div.classList.add('details');
     foodDetails.appendChild(div);
-    
+
 }
+function scrollToTop() {
+
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    
+    }
